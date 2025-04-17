@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <!-- Authentication -->
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.likeai.ecommerce.ui.auth.LoginFragment"
+        android:label="Login">
+        <action
+            android:id="@+id/action_loginFragment_to_signupFragment"
+            app:destination="@id/signupFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/navigation_home"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/signupFragment"
+        android:name="com.likeai.ecommerce.ui.auth.SignupFragment"
+        android:label="Sign Up">
+        <action
+            android:id="@+id/action_signupFragment_to_homeFragment"
+            app:destination="@id/navigation_home"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <!-- Main Navigation -->
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.likeai.ecommerce.ui.fragments.HomeFragment"
+        android:label="@string/title_home">
+        <action
+            android:id="@+id/action_home_to_product_details"
+            app:destination="@id/navigation_product_details" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_categories"
+        android:name="com.likeai.ecommerce.ui.fragments.CategoriesFragment"
+        android:label="@string/title_categories">
+        <action
+            android:id="@+id/action_categories_to_product_list"
+            app:destination="@id/navigation_product_list" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_cart"
+        android:name="com.likeai.ecommerce.ui.fragments.CartFragment"
+        android:label="@string/title_cart">
+        <action
+            android:id="@+id/action_cart_to_checkout"
+            app:destination="@id/navigation_checkout" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.likeai.ecommerce.ui.fragments.ProfileFragment"
+        android:label="@string/title_profile">
+        <action
+            android:id="@+id/action_profile_fragment_to_login_fragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/navigation_home"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_product_details"
+        android:name="com.likeai.ecommerce.ui.fragments.ProductDetailsFragment"
+        android:label="@string/title_product_details">
+        <argument
+            android:name="productId"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_product_list"
+        android:name="com.likeai.ecommerce.ui.fragments.ProductListFragment"
+        android:label="@string/title_product_list">
+        <argument
+            android:name="categoryId"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_checkout"
+        android:name="com.likeai.ecommerce.ui.fragments.CheckoutFragment"
+        android:label="@string/title_checkout" />
+
+</navigation> 
