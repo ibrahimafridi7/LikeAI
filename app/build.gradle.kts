@@ -1,3 +1,7 @@
+import org.gradle.api.JavaVersion
+import java.util.Properties
+import java.io.FileInputStream
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -9,11 +13,10 @@ plugins {
     alias(libs.plugins.navigation.safeargs)
 }
 
-// Load local.properties
-val localProperties = java.util.Properties().apply {
+val localProperties = Properties().apply {
     val localPropertiesFile = rootProject.file("local.properties")
     if (localPropertiesFile.exists()) {
-        load(localPropertiesFile.inputStream())
+        load(FileInputStream(localPropertiesFile))
     }
 }
 

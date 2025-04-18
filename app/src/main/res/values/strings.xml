@@ -39,6 +39,11 @@
     <string name="label_total">Total</string>
     <string name="btn_proceed_checkout">Proceed to Checkout</string>
     <string name="msg_empty_cart">Your cart is empty</string>
+    <string name="total">Total</string>
+    <string name="checkout">Checkout</string>
+    <string name="decrease_quantity">Decrease quantity</string>
+    <string name="increase_quantity">Increase quantity</string>
+    <string name="remove_from_cart">Remove from cart</string>
     
     <!-- Checkout -->
     <string name="label_shipping_address">Shipping Address</string>
