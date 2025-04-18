@@ -9,6 +9,14 @@ plugins {
     alias(libs.plugins.navigation.safeargs)
 }
 
+// Load local.properties
+val localProperties = java.util.Properties().apply {
+    val localPropertiesFile = rootProject.file("local.properties")
+    if (localPropertiesFile.exists()) {
+        load(localPropertiesFile.inputStream())
+    }
+}
+
 android {
     namespace = "com.likeai.ecommerce"
     compileSdk = 34
@@ -21,6 +29,12 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        // Add API keys as BuildConfig fields
+        buildConfigField("String", "FIREBASE_API_KEY", "\"${localProperties.getProperty("FIREBASE_API_KEY", "")}\"")
+        buildConfigField("String", "FIREBASE_APP_ID", "\"${localProperties.getProperty("FIREBASE_APP_ID", "")}\"")
+        buildConfigField("String", "FIREBASE_PROJECT_ID", "\"${localProperties.getProperty("FIREBASE_PROJECT_ID", "")}\"")
+        buildConfigField("String", "FIREBASE_STORAGE_BUCKET", "\"${localProperties.getProperty("FIREBASE_STORAGE_BUCKET", "")}\"")
     }
 
     buildTypes {
@@ -34,6 +48,7 @@ android {
         viewBinding = true
         dataBinding = true
         compose = true
+        buildConfig = true
     }
 
     compileOptions {
